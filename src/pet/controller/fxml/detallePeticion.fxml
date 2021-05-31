@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="principal" prefHeight="280.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pet.controller.DetallePeticion">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="252.0" prefWidth="1257.0" style="-fx-background-color: BDB76B;">
+         <children>
+            <TextField fx:id="idPeticion" editable="false" layoutX="107.0" layoutY="66.0" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="149.0" />
+            <TextField fx:id="idDemanda" editable="false" layoutX="107.0" layoutY="102.0" prefHeight="25.0" prefWidth="149.0" />
+            <TextField fx:id="descripcion" editable="false" layoutX="107.0" layoutY="174.0" prefHeight="25.0" prefWidth="283.0" />
+            <TextField fx:id="repCentro" editable="false" layoutX="732.0" layoutY="66.0" prefHeight="25.0" prefWidth="299.0" />
+            <TextField fx:id="repSolution" editable="false" layoutX="732.0" layoutY="102.0" prefHeight="25.0" prefWidth="299.0" />
+            <TextField fx:id="repRTC" editable="false" layoutX="732.0" layoutY="137.0" prefHeight="25.0" prefWidth="299.0" />
+            <DatePicker fx:id="fechaInicio" editable="false" layoutX="732.0" layoutY="174.0" prefHeight="25.0" prefWidth="159.0" />
+            <DatePicker fx:id="fechaFin" editable="false" layoutX="732.0" layoutY="208.0" prefHeight="25.0" prefWidth="159.0" />
+            <Label layoutX="7.0" layoutY="70.0" prefHeight="17.0" prefWidth="56.0" text="Id Petición" />
+            <Label layoutX="7.0" layoutY="106.0" prefHeight="17.0" prefWidth="93.0" text="Código Demanda" />
+            <Label layoutX="7.0" layoutY="141.0" prefHeight="17.0" prefWidth="69.0" text="Tipo Petición" />
+            <Label layoutX="7.0" layoutY="178.0" prefHeight="17.0" prefWidth="62.0" text="Descripción" />
+            <Label layoutX="11.0" layoutY="11.0" prefHeight="39.0" prefWidth="218.0" text="Detalle Petición">
+               <font>
+                  <Font name="System Italic" size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="624.0" layoutY="70.0" prefHeight="17.0" prefWidth="92.0" text="Linea Base" />
+            <Label layoutX="624.0" layoutY="106.0" prefHeight="17.0" prefWidth="100.0" text="Directorio RTC OSI" />
+            <Label layoutX="624.0" layoutY="142.0" prefHeight="17.0" prefWidth="107.0" text="Directorio RTC PAP" />
+            <TextField fx:id="responsableCentro" editable="false" layoutX="471.0" layoutY="66.0" prefHeight="25.0" prefWidth="138.0" />
+            <Label layoutX="393.0" layoutY="70.0" prefHeight="17.0" prefWidth="67.0" text="Resp Centro" />
+            <Label layoutX="1039.0" layoutY="141.0" prefHeight="17.0" prefWidth="45.0" text="Esfuerzo" />
+            <Label layoutX="624.0" layoutY="178.0" prefHeight="17.0" prefWidth="60.0" text="Fecha Incio" />
+            <Label layoutX="624.0" layoutY="212.0" prefHeight="17.0" prefWidth="50.0" text="Fecha Fin" />
+            <TextField fx:id="esfuerzo" editable="false" layoutX="1108.0" layoutY="137.0" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="83.0" />
+            <Label layoutX="1196.0" layoutY="141.0" prefHeight="17.0" prefWidth="31.0" text="Horas" />
+            <Label layoutX="1039.0" layoutY="70.0" prefHeight="17.0" prefWidth="36.0" text="Estado" />
+            <Label layoutX="7.0" layoutY="212.0" prefHeight="17.0" prefWidth="62.0" text="PPM Etapa" />
+            <Label layoutX="393.0" layoutY="106.0" prefHeight="17.0" prefWidth="67.0" text="Resp Stgo" />
+            <TextField fx:id="responsableStgo" editable="false" layoutX="471.0" layoutY="102.0" prefHeight="25.0" prefWidth="138.0" />
+            <Label layoutX="1038.0" layoutY="212.0" prefHeight="17.0" prefWidth="67.0" text="Incidencias" />
+            <TextField fx:id="incidencias" editable="false" layoutX="1107.0" layoutY="208.0" prefHeight="25.0" prefWidth="138.0" />
+            <Label layoutX="393.0" layoutY="212.0" prefHeight="17.0" prefWidth="69.0" text="PPM Fecha" />
+            <Label layoutX="393.0" layoutY="178.0" prefHeight="17.0" prefWidth="60.0" text="Kiuwan" />
+            <DatePicker fx:id="ppmFecha" editable="false" layoutX="471.0" layoutY="208.0" prefHeight="25.0" prefWidth="138.0" />
+            <DatePicker fx:id="fechaKiuwan" editable="false" layoutX="471.0" layoutY="174.0" prefHeight="25.0" prefWidth="138.0" />
+            <TextField fx:id="ncs" editable="false" layoutX="1109.0" layoutY="102.0" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="138.0" />
+            <Label layoutX="1039.0" layoutY="106.0" prefHeight="17.0" prefWidth="45.0" text="NCs" />
+            <Label layoutX="1038.0" layoutY="178.0" prefHeight="17.0" prefWidth="45.0" text="Dudas" />
+            <TextField fx:id="dudas" editable="false" layoutX="1108.0" layoutY="174.0" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="138.0" />
+            <TextField fx:id="tipoPeticion" editable="false" layoutX="107.0" layoutY="137.0" prefHeight="25.0" prefWidth="149.0" />
+            <TextField fx:id="etapaPPM" editable="false" layoutX="107.0" layoutY="208.0" prefHeight="25.0" prefWidth="149.0" />
+            <TextField fx:id="estado" editable="false" layoutX="1109.0" layoutY="66.0" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="138.0" />
+            <TextField fx:id="etapaPeticion" editable="false" layoutX="471.0" layoutY="137.0" prefHeight="25.0" prefWidth="138.0" />
+            <Label layoutX="393.0" layoutY="141.0" prefHeight="17.0" prefWidth="83.0" text="Etapa petición" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+   </children>
+</Pane>

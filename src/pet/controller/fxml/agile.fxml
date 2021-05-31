@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="873.0" prefWidth="1686.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pet.controller.Agile">
+   <children>
+      <Pane fx:id="principal" prefHeight="868.0" prefWidth="1686.0" style="-fx-background-color: DCDCDC;">
+         <children>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="339.0" prefWidth="1667.0" style="-fx-background-color: BDB76B;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <TextField fx:id="tNSprint" layoutX="271.0" layoutY="111.0" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="180.0" promptText="N° Sprint" />
+                  <TextField fx:id="tNPuntos" layoutX="674.0" layoutY="111.0" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="180.0" promptText="N° puntos sprint" />
+                  <TextField fx:id="tHistoCompletadas" layoutX="873.0" layoutY="111.0" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="180.0" promptText="N° HU completadas" />
+                  <DatePicker fx:id="dFechaIni" layoutX="1273.0" layoutY="111.0" prefHeight="25.0" prefWidth="180.0" promptText="Fecha Incio" />
+                  <DatePicker fx:id="dFechaFin" layoutX="1472.0" layoutY="111.0" prefHeight="25.0" prefWidth="180.0" promptText="Fecha Fin" />
+                  <Label layoutX="11.0" layoutY="11.0" prefHeight="39.0" prefWidth="247.0" text="Ingreso Info sprints">
+                     <font>
+                        <Font name="System Italic" size="27.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tPuntCompletados" layoutX="1073.0" layoutY="111.0" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="180.0" promptText="N° puntos completados" />
+                  <ComboBox fx:id="cCelula" layoutX="24.0" layoutY="111.0" prefHeight="25.0" prefWidth="225.0" promptText="Célula" />
+                  <TextField fx:id="tNHistorias" layoutX="474.0" layoutY="111.0" onAction="#onlyNumbers" onKeyTyped="#onlyNumbers" prefHeight="25.0" prefWidth="180.0" promptText="N° HU sprint" />
+                  <TableView fx:id="tableHistorias" layoutX="20.0" layoutY="212.0" onMouseClicked="#eliminaFactHist" prefHeight="114.0" prefWidth="595.0">
+                    <columns>
+                      <TableColumn fx:id="colIdHistoria" prefWidth="75.0" resizable="false" text="ID Historia" />
+                      <TableColumn fx:id="colDescHistoria" prefWidth="420.0" resizable="false" text="Descripción historia" />
+                        <TableColumn fx:id="colEstadoHistoria" prefWidth="90.0" resizable="false" text="Estado" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="tIdHistoria" layoutX="21.0" layoutY="173.0" prefHeight="25.0" prefWidth="80.0" promptText="Id Historia" />
+                  <TextField fx:id="tDescHistoria" layoutX="111.0" layoutY="173.0" prefHeight="25.0" prefWidth="225.0" promptText="Descripción Historia" />
+                  <ComboBox fx:id="cEstadoHistoria" layoutX="348.0" layoutY="173.0" prefWidth="150.0" promptText="Estado" />
+                  <Button fx:id="bAgregaHistoria" layoutX="511.0" layoutY="173.0" mnemonicParsing="false" onAction="#agregaHistoria" prefHeight="25.0" prefWidth="101.0" text="Agregar" />
+                  <Button fx:id="bAgregaRiesgo" layoutX="1372.0" layoutY="172.0" mnemonicParsing="false" onAction="#agregaRiesgo" prefHeight="25.0" prefWidth="101.0" text="Agregar" />
+                  <TextField fx:id="tImpactRiesgo" layoutX="776.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" promptText="Impacto" />
+                  <TextField fx:id="tRiesgo" layoutX="630.0" layoutY="172.0" prefHeight="25.0" prefWidth="140.0" promptText="Riesgo" />
+                  <TableView fx:id="tableRiesgos" layoutX="629.0" layoutY="211.0" onMouseClicked="#eliminaFactRiesgo" prefHeight="114.0" prefWidth="846.0">
+                     <columns>
+                        <TableColumn fx:id="colRiesgo" prefWidth="200.0" resizable="false" text="Riesgo" />
+                        <TableColumn fx:id="colImpactoRiesgo" prefWidth="180.0" resizable="false" text="Impacto" />
+                        <TableColumn fx:id="colAccionRiesgo" prefWidth="180.0" resizable="false" text="Acción / Mitigación" />
+                        <TableColumn fx:id="colResponsableRiesgo" prefWidth="150.0" resizable="false" text="Responable" />
+                        <TableColumn fx:id="colFechaRiesgo" prefWidth="120.0" resizable="false" text="Fecha" />
+                     </columns>
+                  </TableView>
+                  <TextField fx:id="tAccionRiesgo" layoutX="933.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" promptText="Acción / Mitigación" />
+                  <TextField fx:id="tResponsableRiesgo" layoutX="1090.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" promptText="Responsable" />
+                  <DatePicker fx:id="dFechaRiesgo" layoutX="1245.0" layoutY="172.0" prefHeight="25.0" prefWidth="117.0" promptText="Fecha" />
+                  <TextField fx:id="tObjetivo" layoutX="21.0" layoutY="62.0" prefHeight="25.0" prefWidth="687.0" promptText="Objetivo Sprint" />
+                  <Button fx:id="bGuardar" layoutX="1495.0" layoutY="268.0" mnemonicParsing="false" onAction="#guardarSprint" prefHeight="57.0" prefWidth="162.0" text="Guardar" />
+                  <TextField fx:id="tHighlight" layoutX="721.0" layoutY="62.0" prefHeight="25.0" prefWidth="687.0" promptText="Highlight" />
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="361.0" prefHeight="506.0" prefWidth="1667.0" style="-fx-background-color: BDB76B;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <TableView fx:id="tableSprint" layoutX="14.0" layoutY="96.0" prefHeight="404.0" prefWidth="1646.0">
+                    <columns>
+                      <TableColumn fx:id="colCelulaSprint" prefWidth="150.0" resizable="false" text="Célula" />
+                      <TableColumn fx:id="colSprint" prefWidth="150.0" resizable="false" text="Sprint" />
+                        <TableColumn fx:id="colObjetivoSprint" prefWidth="280.0" resizable="false" text="Objetivo del sprint" />
+                        <TableColumn fx:id="colHighlightSprint" prefWidth="250.0" resizable="false" text="Highlight" />
+                        <TableColumn fx:id="colNHUSprint" prefWidth="150.0" resizable="false" text="N° HU sprint" />
+                        <TableColumn fx:id="colNPuntosSprint" prefWidth="150.0" resizable="false" text="N° puntos sprint" />
+                        <TableColumn fx:id="colNHuComplSprint" prefWidth="150.0" resizable="false" text="N° HU completadas" />
+                        <TableColumn fx:id="colNPuntComplSprint" prefWidth="150.0" resizable="false" text="N° puntos completados" />
+                        <TableColumn fx:id="colFIniSprint" prefWidth="100.0" resizable="false" text="Fecha inicio" />
+                        <TableColumn fx:id="colFFinSprint" prefWidth="100.0" resizable="false" text="Fecha fin" />
+                    </columns>
+                  </TableView>
+                  <ComboBox fx:id="cCelulaSearch" layoutX="14.0" layoutY="61.0" prefHeight="25.0" prefWidth="302.0" promptText="Célula" />
+                  <TextField fx:id="tSprintSearch" layoutX="327.0" layoutY="61.0" onKeyTyped="#onlyNumbers" promptText="Sprint" />
+                  <DatePicker fx:id="dFechaSearch" layoutX="493.0" layoutY="61.0" promptText="Fecha sprint" />
+                  <Label layoutX="14.0" layoutY="7.0" prefHeight="39.0" prefWidth="247.0" text="Listado sprints">
+                     <font>
+                        <Font name="System Italic" size="27.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="bBuscar" layoutX="681.0" layoutY="61.0" mnemonicParsing="false" onAction="#buscaInfo" prefHeight="25.0" prefWidth="140.0" text="Buscar" />
+                  <Button fx:id="bDetalleSprint" layoutX="837.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" text="Detalle sprint" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

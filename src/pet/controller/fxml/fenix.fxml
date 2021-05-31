@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="880.0" prefWidth="1686.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pet.controller.Fenix">
+   <children>
+      <Pane prefHeight="880.0" prefWidth="1686.0" style="-fx-background-color: DCDCDC;">
+         <children>
+            <Pane layoutX="8.0" layoutY="10.0" prefHeight="858.0" prefWidth="1669.0" style="-fx-background-color: BDB76B;">
+               <children>
+                  <Label layoutX="10.0" layoutY="9.0" prefHeight="39.0" prefWidth="376.0" text="Listado Peticiones">
+                     <font>
+                        <Font name="System Italic" size="27.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="bBuscar" layoutX="523.0" layoutY="87.0" mnemonicParsing="false" onAction="#buscarFenix" prefHeight="25.0" prefWidth="75.0" text="Buscar" />
+                  <Button fx:id="bDetalle" layoutX="610.0" layoutY="88.0" mnemonicParsing="false" onAction="#verDetalleFenix" prefHeight="25.0" prefWidth="75.0" text="Ver Detalle" />
+                  <Label layoutX="14.0" layoutY="60.0" prefHeight="17.0" prefWidth="150.0" text="Aplicación" />
+                  <TableView fx:id="tablePeticiones" editable="true" layoutX="7.0" layoutY="138.0" prefHeight="715.0" prefWidth="1656.0" style="-fx-border-color: black;">
+                     <columns>
+                        <TableColumn fx:id="colIdPet" editable="false" prefWidth="70.0" resizable="false" text="ID" />
+                        <TableColumn fx:id="colDescripcion" editable="false" prefWidth="280.0" resizable="false" sortable="false" text="Descripción" />
+                        <TableColumn fx:id="colTipPet" editable="false" prefWidth="110.0" resizable="false" sortable="false" text="Tipo" />
+                        <TableColumn fx:id="colEstado" prefWidth="90.0" resizable="false" text="Estado" />
+                        <TableColumn fx:id="colResponsable" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Responsable" />
+                        <TableColumn fx:id="colDCentro" editable="false" prefWidth="110.0" resizable="false" sortable="false" text="Direct entrega" />
+                        <TableColumn fx:id="colFechaInicio" resizable="false" text="Fecha ini" />
+                        <TableColumn fx:id="colFechaFin" resizable="false" text="Fecha fin" />
+                        <TableColumn fx:id="colDudas" prefWidth="65.0" resizable="false" text="Dudas" />
+                        <TableColumn fx:id="colNCs" prefWidth="55.0" resizable="false" text="NCs" />
+                        <TableColumn fx:id="colHAcuerdo" prefWidth="75.0" resizable="false" text="Acuerdo" />
+                        <TableColumn fx:id="colHPlanif" prefWidth="75.0" resizable="false" text="Planificado" />
+                        <TableColumn fx:id="colIncidenciasInt" editable="false" prefWidth="90.0" resizable="false" sortable="false" text="Incidencias Int" />
+                        <TableColumn fx:id="colIncurridoInt" prefWidth="65.0" resizable="false" text="Incur Int" />
+                        <TableColumn fx:id="colRatio" prefWidth="60.0" resizable="false" text="Ratio" />
+                        <TableColumn fx:id="colRetrabajo" prefWidth="60.0" text="Retrabajo" />
+                        <TableColumn fx:id="colIncidenciasExt" editable="false" prefWidth="70.0" resizable="false" sortable="false" text="Inc ETX" />
+                        <TableColumn fx:id="colETC" prefWidth="55.0" resizable="false" text="ETC" />
+                        <TableColumn fx:id="colETCAut" prefWidth="55.0" resizable="false" text="ETC Aut" />
+                     </columns>
+                  </TableView>
+                  <ComboBox fx:id="cEstado" editable="true" layoutX="178.0" layoutY="87.0" prefWidth="150.0" />
+                  <ComboBox fx:id="cAplicacion" editable="true" layoutX="14.0" layoutY="87.0" prefWidth="150.0" />
+                  <Label layoutX="178.0" layoutY="60.0" prefHeight="17.0" prefWidth="150.0" text="Estado" />
+                  <DatePicker fx:id="dFechaSolicitud" layoutX="338.0" layoutY="87.0" />
+                  <Label layoutX="338.0" layoutY="60.0" prefHeight="17.0" prefWidth="150.0" text="Fecha Solicitud" />
+                  <ChoiceBox fx:id="chEstado" layoutX="708.0" layoutY="88.0" prefWidth="150.0" visible="false" />
+                  <ChoiceBox fx:id="chAplicacion" layoutX="875.0" layoutY="88.0" prefWidth="150.0" visible="false" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

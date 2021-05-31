@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<ScrollPane fx:id="contentScroll" prefHeight="874.0" prefWidth="1847.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pet.controller.Aplicacion">
+   <content>
+      <Pane id="main" fx:id="mainPane" prefHeight="874.0" prefWidth="1848.0" style="-fx-background-color: white;" styleClass="main">
+         <children>
+            <Group>
+               <children>
+                  <BorderPane fx:id="contenedor" layoutX="154.0" layoutY="1.0" minHeight="628.0" prefHeight="868.0" prefWidth="1686.0" style="-fx-background-color: white;" styleClass="pane" />
+                  <Button layoutX="1.0" layoutY="137.0" mnemonicParsing="false" prefHeight="724.0" prefWidth="150.0" />
+                  <Button fx:id="rutas" layoutX="1.0" layoutY="564.0" mnemonicParsing="false" onAction="#clickRutas" prefHeight="60.0" prefWidth="150.0" text="Rutas">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="entregadas" layoutX="1.0" layoutY="503.0" mnemonicParsing="false" onAction="#clickEntregadas" prefHeight="60.0" prefWidth="150.0" text="Entregadas">
+                     <font>
+                        <Font name="System Italic" size="22.0" />
+                     </font>
+                  </Button>
+                  <Separator layoutX="151.0" layoutY="-1.0" minHeight="628.0" orientation="VERTICAL" prefHeight="940.0" />
+                  <Pane fx:id="fondo" layoutX="1.0" layoutY="1.0" prefHeight="135.0" prefWidth="150.0" />
+                  <Button fx:id="principal" layoutX="1.0" layoutY="137.0" mnemonicParsing="false" onAction="#clickEjecucion" prefHeight="60.0" prefWidth="150.0" text="Principal">
+                     <font>
+                        <Font name="System Italic" size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="fenix" layoutX="1.0" layoutY="198.0" mnemonicParsing="false" onAction="#clickFenix" prefHeight="60.0" prefWidth="150.0" text="Fenix">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Italic" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="celulas" layoutX="1.0" layoutY="259.0" mnemonicParsing="false" onAction="#clickCelulas" prefHeight="60.0" prefWidth="150.0" text="Células">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="incurridos" layoutX="1.0" layoutY="381.0" mnemonicParsing="false" onAction="#clickIncurridos" prefHeight="60.0" prefWidth="150.0" text="Incurridos">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="rally" layoutX="1.0" layoutY="320.0" mnemonicParsing="false" onAction="#clickRally" prefHeight="60.0" prefWidth="150.0" text="Rally">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="prevision" layoutY="442.0" mnemonicParsing="false" onAction="#clickPrevision" prefHeight="60.0" prefWidth="150.0" text="Previsión">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Group>
+         </children>
+      </Pane>
+   </content>
+</ScrollPane>

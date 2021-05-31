@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="868.0" prefWidth="1686.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pet.controller.Entregadas">
+   <children>
+      <Pane prefHeight="868.0" prefWidth="1686.0" style="-fx-background-color: DCDCDC;">
+         <children>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="858.0" prefWidth="1669.0" style="-fx-background-color: BDB76B;">
+               <children>
+                  <Label layoutX="10.0" layoutY="9.0" prefHeight="39.0" prefWidth="376.0" text="Listado Peticiones entregadas">
+                     <font>
+                        <Font name="System Italic" size="27.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="bBuscarEnt" layoutX="175.0" layoutY="87.0" mnemonicParsing="false" onAction="#buscarEnt" prefHeight="25.0" prefWidth="51.0" text="Buscar" />
+                  <Button fx:id="bDetalleEnt" layoutX="237.0" layoutY="88.0" mnemonicParsing="false" onAction="#verDetalleEnt" prefHeight="25.0" prefWidth="75.0" text="Ver Detalle" />
+                  <Button fx:id="bActualizarEnt" layoutX="323.0" layoutY="88.0" mnemonicParsing="false" onAction="#actualizarEnt" prefHeight="25.0" prefWidth="68.0" text="Modificar" />
+                  <Button fx:id="bBorrarEnt" layoutX="403.0" layoutY="88.0" mnemonicParsing="false" onAction="#eliminarEnt" prefHeight="25.0" prefWidth="49.0" text="Borrar" />
+                  <TextField fx:id="tBusquedaEnt" layoutX="14.0" layoutY="87.0" onKeyReleased="#buscaEnter" prefHeight="25.0" prefWidth="149.0" />
+                  <Label layoutX="14.0" layoutY="60.0" prefHeight="17.0" prefWidth="39.0" text="Criterio" />
+                  <Pane layoutX="941.0" layoutY="63.0" prefHeight="50.0" prefWidth="201.0" style="-fx-background-color: BDAA6F;">
+                     <children>
+                        <TextField fx:id="tEntregadasEnt" editable="false" layoutX="147.0" layoutY="10.0" prefHeight="25.0" prefWidth="40.0" style="-fx-background-color: ADB76B; -fx-alignment: CENTER;">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="15.0" layoutY="14.0" text="Peticiones entregadas" />
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Pane>
+                  <TableView fx:id="tablePeticiones" editable="true" layoutX="7.0" layoutY="138.0" onMouseClicked="#abreDirectorio" prefHeight="715.0" prefWidth="1657.0" style="-fx-border-color: black;">
+                     <columns>
+                        <TableColumn fx:id="colTipPet" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Tipo" />
+                        <TableColumn fx:id="colIdPet" editable="false" resizable="false" text="Fenix" />
+                        <TableColumn fx:id="colCodDemanda" editable="false" prefWidth="105.0" resizable="false" sortable="false" text="Demanda" />
+                        <TableColumn fx:id="colDescripcion" editable="false" prefWidth="400.0" resizable="false" sortable="false" text="Descripción" />
+                        <TableColumn fx:id="colEstado" prefWidth="120.0" text="Estado" />
+                        <TableColumn fx:id="colResponsable" editable="false" prefWidth="140.0" resizable="false" sortable="false" text="Responsable">
+                           <columns>
+                              <TableColumn fx:id="colRespCentro" prefWidth="75.0" text="Centro" />
+                              <TableColumn fx:id="colRespStgo" prefWidth="75.0" text="Santiago" />
+                           </columns>
+                        </TableColumn>
+                        <TableColumn fx:id="colDCentro" editable="false" prefWidth="110.0" resizable="false" sortable="false" text="Documentación" />
+                        <TableColumn fx:id="colDRtcPap" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Fuentes Pap" />
+                        <TableColumn fx:id="colDRtcOsi" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Fuentes OSI" />
+                        <TableColumn fx:id="colDSolution" editable="false" prefWidth="110.0" resizable="false" sortable="false" text="PPM">
+                           <columns>
+                              <TableColumn fx:id="colPPMEtapa" prefWidth="75.0" text="Etapa" />
+                              <TableColumn fx:id="colPPMFecha" prefWidth="75.0" text="Fecha" />
+                           </columns>
+                        </TableColumn>
+                        <TableColumn fx:id="colIncidencias" editable="false" prefWidth="65.0" resizable="false" sortable="false" text="Inc" />
+                        <TableColumn fx:id="colDudas" prefWidth="65.0" text="Dudas" />
+                        <TableColumn fx:id="colNCs" prefWidth="75.0" text="NCs" />
+                        <TableColumn fx:id="colKiuwan" prefWidth="75.0" text="Kiuwan" />
+                     </columns>
+                  </TableView>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>
