@@ -8,6 +8,7 @@ public class Configuraciones {
 	private static String PASSWORD = "";
 	private static String BASE_PATH = "";
 	private static String PDF_PATH = "";
+	private static Boolean IS_MOCK = false;
 	
 	public static String getConfigValue(String var){
 		if(var.equals("url")){
@@ -21,6 +22,14 @@ public class Configuraciones {
 		}else if(var.equals("pdf_path")){
 			return PDF_PATH;
 		}else{
+			return null;
+		}
+	}
+
+	public static Boolean getIsMock(String var) {
+		if (var.equals("is_mock")) {
+			return IS_MOCK;
+		} else {
 			return null;
 		}
 	}
