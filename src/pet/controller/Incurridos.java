@@ -147,15 +147,18 @@ public class Incurridos implements Initializable{
     @FXML
     void buscar(ActionEvent event) {
 		try {
+			if (dFecha.getValue() == null ) {
+				return;
+			}
 			Date firstFecha = CnvString.getFirstDateOfMonth(dFecha);
 			Date lastFecha = CnvString.getLastDateOfMonth(dFecha);
-			
-			HashMap<String, EmpleadoVO> incurridos = ObtieneIncurridos.obtieneIncurridosFenix(null, CnvString.convertFecha(firstFecha), CnvString.convertFecha(lastFecha));
+			String celda = "'C. DES Telefonica Agile', 'C. DES CEL HACINADOS', 'C. QA', 'C. DES CEL MOVISTAR CLICK', 'C. DES Movilidad'";
+
+			HashMap<String, EmpleadoVO> incurridos = ObtieneIncurridos.obtieneIncurridosFenix(celda, CnvString.convertFecha(firstFecha), CnvString.convertFecha(lastFecha));
 			ObservableList<EmpleadoVO> empleadosList = FXCollections.observableArrayList();
 			
 			for(Map.Entry<String, EmpleadoVO> entry : incurridos.entrySet()) {
 			    EmpleadoVO empleado = entry.getValue();
-			    String nroEmpleado = entry.getKey();
 			    ObservableList<IncurridoVO> incu = empleado.getIncurridos();
 			    HashMap<Date, DiaVO> incuAgrup = new HashMap<Date, DiaVO>();
 
