@@ -27,6 +27,7 @@ import pet.acciones.IncurridosAction;
 import pet.datos.ObtieneIncurridos;
 import pet.util.CnvString;
 import pet.util.TableColumnUtil;
+import pet.vo.DatoCelula;
 import pet.vo.DiaVO;
 import pet.vo.EmpleadoVO;
 import pet.vo.IncurridoVO;
@@ -154,7 +155,8 @@ public class Incurridos implements Initializable{
 			Date lastFecha = CnvString.getLastDateOfMonth(dFecha);
 			String celda = "'C. DES Telefonica Agile', 'C. DES CEL HACINADOS', 'C. QA', 'C. DES CEL MOVISTAR CLICK', 'C. DES Movilidad'";
 
-			HashMap<String, EmpleadoVO> incurridos = ObtieneIncurridos.obtieneIncurridosFenix(celda, CnvString.convertFecha(firstFecha), CnvString.convertFecha(lastFecha));
+			HashMap<String, EmpleadoVO> incurridosTotales = ObtieneIncurridos.obtieneIncurridosFenix(celda, CnvString.convertFecha(firstFecha), CnvString.convertFecha(lastFecha));
+			HashMap<String, EmpleadoVO> incurridos = agruparPorCelula(incurridosTotales);
 			ObservableList<EmpleadoVO> empleadosList = FXCollections.observableArrayList();
 			
 			for(Map.Entry<String, EmpleadoVO> entry : incurridos.entrySet()) {
@@ -202,7 +204,7 @@ public class Incurridos implements Initializable{
     //Comparator for int, by Number
     static Comparator<? super EmpleadoVO> comparador = new Comparator<EmpleadoVO>() {
         public int compare(EmpleadoVO o1, EmpleadoVO o2) {
-            return o1.getNomEmpleado().compareTo(o2.getNomEmpleado());
+            return o1.getIdentificador().compareTo(o2.getIdentificador());
         }
     };
 	    
@@ -280,5 +282,84 @@ public class Incurridos implements Initializable{
 		TableColumnUtil.setIniColumnInc(col128, dFecha, 29, "day29");
 		TableColumnUtil.setIniColumnInc(col129, dFecha, 30, "day30");
 		TableColumnUtil.setIniColumnInc(col130, dFecha, 31, "day31");	
+	}
+
+	private HashMap<String, EmpleadoVO> agruparPorCelula(HashMap<String, EmpleadoVO> input) {
+		HashMap<String, EmpleadoVO> resiltIncurridos = new HashMap<String, EmpleadoVO>();
+		HashMap<String, DatoCelula> datosCelulas = crearCelulas();
+
+		Integer contador = 1;
+
+		for (Map.Entry<String, DatoCelula> infocelula : datosCelulas.entrySet()) {
+			System.out.println("Nombre de la celula: " + infocelula.getKey().toString());
+			ObservableList<IncurridoVO> incurri = FXCollections.observableArrayList();
+			EmpleadoVO emp = new EmpleadoVO();
+			emp.setNomEmpleado("");
+			emp.setNroEmpleado(infocelula.getKey().toString());
+			emp.setCelula(infocelula.getKey().toString());
+
+			emp.setIncurridos(incurri);
+			emp.setIdentificador(contador);
+			resiltIncurridos.put("" + contador, emp);
+			contador++;
+			
+			for (String idEMpleado : infocelula.getValue().getNomEmpleados()) {
+				for (Map.Entry<String, EmpleadoVO> personalIncurrido : input.entrySet()) {
+					if (idEMpleado.equals(personalIncurrido.getKey().toString())) {
+						System.out.println("Nombre Empleado: " + personalIncurrido.getValue().getNomEmpleado() + " - ID Empleado: " + idEMpleado);
+						personalIncurrido.getValue().setIdentificador(contador);
+						personalIncurrido.getValue().setCelula(infocelula.getKey().toString());
+						resiltIncurridos.put("" + contador, personalIncurrido.getValue());
+						contador++;
+					}
+				}
+
+			}
+			System.out.println("*************************************");
+		}
+
+		return resiltIncurridos;
+	}
+
+	private HashMap<String, DatoCelula> crearCelulas() {
+		HashMap<String, DatoCelula> datosCelulas = new HashMap<String, DatoCelula>();
+
+		DatoCelula celula = new DatoCelula();
+		String[] nomEmpleadosAppForce = new String[4];
+		nomEmpleadosAppForce[0] = "175464";
+		nomEmpleadosAppForce[1] = "171406";
+		nomEmpleadosAppForce[2] = "184539";
+		nomEmpleadosAppForce[3] = "189848";
+		celula.setNombreCelula("APP FORCE");
+		celula.setNomEmpleados(nomEmpleadosAppForce);
+		datosCelulas.put("APP FORCE", celula);
+
+		celula = new DatoCelula();
+		celula.setNombreCelula("MOLTEN UNIT");
+		String[] nomEmpleadosMoltenUnit = new String[2];
+		nomEmpleadosMoltenUnit[0] = "118678";
+		nomEmpleadosMoltenUnit[1] = "178207";
+		celula.setNomEmpleados(nomEmpleadosMoltenUnit);
+		datosCelulas.put("MOLTEN UNIT", celula);
+
+		celula = new DatoCelula();
+		celula.setNombreCelula("WEB ONE");
+		String[] nomEmpleadosWebOne = new String[1];
+		nomEmpleadosWebOne[0] = "132697";
+		celula.setNomEmpleados(nomEmpleadosWebOne);
+		datosCelulas.put("WEB ONE", celula);
+
+		celula = new DatoCelula();
+		celula.setNombreCelula("XDEVS");
+		String[] nomEmpleadosXdevs = new String[5];
+		nomEmpleadosXdevs[0] = "191236";
+		nomEmpleadosXdevs[1] = "191235";
+		nomEmpleadosXdevs[2] = "191034";
+		nomEmpleadosXdevs[3] = "138247";
+		nomEmpleadosXdevs[4] = "189639";
+		celula.setNomEmpleados(nomEmpleadosXdevs);
+		datosCelulas.put("XDEV", celula);
+		
+		return datosCelulas;
 	}
 }
