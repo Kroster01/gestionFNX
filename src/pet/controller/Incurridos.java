@@ -3,6 +3,7 @@ package pet.controller;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
@@ -32,8 +33,8 @@ import pet.vo.DiaVO;
 import pet.vo.EmpleadoVO;
 import pet.vo.IncurridoVO;
 
-public class Incurridos implements Initializable{
-	
+public class Incurridos implements Initializable {
+
    @FXML
     private TableColumn<EmpleadoVO, String> col18;
 
@@ -146,9 +147,9 @@ public class Incurridos implements Initializable{
     private Button bBuscar;
 
     @FXML
-    void buscar(ActionEvent event) {
+	void buscar(ActionEvent event) {
 		try {
-			if (dFecha.getValue() == null ) {
+			if (dFecha.getValue() == null) {
 				return;
 			}
 			Date firstFecha = CnvString.getFirstDateOfMonth(dFecha);
@@ -156,101 +157,85 @@ public class Incurridos implements Initializable{
 			String celda = "'C. DES Telefonica Agile', 'C. DES CEL HACINADOS', 'C. QA', 'C. DES CEL MOVISTAR CLICK', 'C. DES Movilidad'";
 
 			HashMap<String, EmpleadoVO> incurridosTotales = ObtieneIncurridos.obtieneIncurridosFenix(celda, CnvString.convertFecha(firstFecha), CnvString.convertFecha(lastFecha));
-			HashMap<String, EmpleadoVO> incurridos = agruparPorCelula(incurridosTotales);
+			HashMap<String, EmpleadoVO> incurridos = agruparPorCelula(incurridosTotales, lastFecha);
 			ObservableList<EmpleadoVO> empleadosList = FXCollections.observableArrayList();
-			
-			for(Map.Entry<String, EmpleadoVO> entry : incurridos.entrySet()) {
-			    EmpleadoVO empleado = entry.getValue();
-			    ObservableList<IncurridoVO> incu = empleado.getIncurridos();
-			    HashMap<Date, DiaVO> incuAgrup = new HashMap<Date, DiaVO>();
 
-			    for (IncurridoVO incurridoVO : incu) {   	
-			    	
-			    	if(null != incuAgrup.get(incurridoVO.getFecha())){
-			    		DiaVO dia = incuAgrup.get(incurridoVO.getFecha());
-			    		dia.setHoras(dia.getHoras() + incurridoVO.getHoras());
-			    		dia.setDescIncurrido(dia.getDescIncurrido() + "; " + incurridoVO.getDescIncurrido());
-			    		incuAgrup.remove(incurridoVO.getFecha());
-			    		incuAgrup.put(incurridoVO.getFecha(), dia);
-			    	}else{
-			    		DiaVO dia = new DiaVO();
-			    		dia.setHoras(incurridoVO.getHoras());
-			    		dia.setDescIncurrido(incurridoVO.getDescIncurrido());
-			    		incuAgrup.put(incurridoVO.getFecha(), dia);
-			    	}
-				}
-			    
-			    IncurridosAction.setHorasInc(empleado, incuAgrup);
-			    
-			    empleadosList.add(empleado);
+			for (Map.Entry<String, EmpleadoVO> entry : incurridos.entrySet()) {
+				EmpleadoVO empleado = entry.getValue();
+				ObservableList<IncurridoVO> incu = empleado.getIncurridos();
+				HashMap<Date, DiaVO> incuAgrup = agruparIncurrido(incu);
+				IncurridosAction.setHorasInc(empleado, incuAgrup);
+				empleadosList.add(empleado);
 			}
-			
+
 			FXCollections.sort(empleadosList, comparador);
-			
+
 			for (EmpleadoVO empleado : empleadosList) {
 				System.out.println(empleado.getNroEmpleado() + ";" + empleado.getNomEmpleado() + ";" + empleado.getCelula());
 			}
-			
+
 			tableIncurrido.getItems().clear();
 			tableIncurrido.setItems(empleadosList);
-			
+
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    }
-    
-    //Comparator for int, by Number
-    static Comparator<? super EmpleadoVO> comparador = new Comparator<EmpleadoVO>() {
-        public int compare(EmpleadoVO o1, EmpleadoVO o2) {
-            return o1.getIdentificador().compareTo(o2.getIdentificador());
-        }
-    };
-	    
+	}
+
+	// Comparator for int, by Number
+	static Comparator<? super EmpleadoVO> comparador = new Comparator<EmpleadoVO>() {
+		public int compare(EmpleadoVO o1, EmpleadoVO o2) {
+			return o1.getIdentificador().compareTo(o2.getIdentificador());
+		}
+	};
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 //		colNomEmpl.setStyle("-fx-alignment: CENTER;");
 		colNomEmpl.setCellValueFactory(new PropertyValueFactory<EmpleadoVO, String>("nomEmpleado"));
 		colNomEmpl.setCellFactory(new Callback<TableColumn<EmpleadoVO, String>, TableCell<EmpleadoVO, String>>() {
-            @Override
-            public TableCell<EmpleadoVO, String> call(TableColumn<EmpleadoVO, String> p) {
-                TableCell<EmpleadoVO, String> cell = new TableCell<EmpleadoVO, String>() {
-                	private Tooltip tooltip = new Tooltip();
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                    	setText(item);
-                        tooltip.setText(item);
-                        setTooltip(tooltip);
+			@Override
+			public TableCell<EmpleadoVO, String> call(TableColumn<EmpleadoVO, String> p) {
+				TableCell<EmpleadoVO, String> cell = new TableCell<EmpleadoVO, String>() {
+					private Tooltip tooltip = new Tooltip();
+
+					@Override
+					public void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						setText(item);
+						tooltip.setText(item);
+						setTooltip(tooltip);
 //                        setStyle("-fx-alignment: CENTER;");  
-                    }
-                };
-                return cell;
-            }
-        });
-		
+					}
+				};
+				return cell;
+			}
+		});
+
 		colNumEmpl.setStyle("-fx-alignment: CENTER;");
 		colNumEmpl.setCellValueFactory(new PropertyValueFactory<EmpleadoVO, String>("nroEmpleado"));
 		colNumEmpl.setCellFactory(new Callback<TableColumn<EmpleadoVO, String>, TableCell<EmpleadoVO, String>>() {
-            @Override
-            public TableCell<EmpleadoVO, String> call(TableColumn<EmpleadoVO, String> p) {
-                TableCell<EmpleadoVO, String> cell = new TableCell<EmpleadoVO, String>() {
-                	private Tooltip tooltip = new Tooltip();
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                    	setText(item);
-                        tooltip.setText(item);
-                        setTooltip(tooltip);
-                        setStyle("-fx-alignment: CENTER;");
-                    }
-                };
-                return cell;
-            }
-        });
-		
+			@Override
+			public TableCell<EmpleadoVO, String> call(TableColumn<EmpleadoVO, String> p) {
+				TableCell<EmpleadoVO, String> cell = new TableCell<EmpleadoVO, String>() {
+					private Tooltip tooltip = new Tooltip();
+
+					@Override
+					public void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						setText(item);
+						tooltip.setText(item);
+						setTooltip(tooltip);
+						setStyle("-fx-alignment: CENTER;");
+					}
+				};
+				return cell;
+			}
+		});
+
 		TableColumnUtil.setIniColumnInc(col1, dFecha, 1, "day1");
 		TableColumnUtil.setIniColumnInc(col11, dFecha, 2, "day2");
 		TableColumnUtil.setIniColumnInc(col12, dFecha, 3, "day3");
@@ -281,34 +266,34 @@ public class Incurridos implements Initializable{
 		TableColumnUtil.setIniColumnInc(col127, dFecha, 28, "day28");
 		TableColumnUtil.setIniColumnInc(col128, dFecha, 29, "day29");
 		TableColumnUtil.setIniColumnInc(col129, dFecha, 30, "day30");
-		TableColumnUtil.setIniColumnInc(col130, dFecha, 31, "day31");	
+		TableColumnUtil.setIniColumnInc(col130, dFecha, 31, "day31");
 	}
 
-	private HashMap<String, EmpleadoVO> agruparPorCelula(HashMap<String, EmpleadoVO> input) {
+	private HashMap<String, EmpleadoVO> agruparPorCelula(HashMap<String, EmpleadoVO> input, Date fecha) throws ParseException {
 		HashMap<String, EmpleadoVO> resiltIncurridos = new HashMap<String, EmpleadoVO>();
-		HashMap<String, DatoCelula> datosCelulas = crearCelulas();
+		HashMap<Integer, DatoCelula> datosCelulas = crearCelulas();
 
 		Integer contador = 1;
 
-		for (Map.Entry<String, DatoCelula> infocelula : datosCelulas.entrySet()) {
-			System.out.println("Nombre de la celula: " + infocelula.getKey().toString());
-			ObservableList<IncurridoVO> incurri = FXCollections.observableArrayList();
+		for (Map.Entry<Integer, DatoCelula> infocelula : datosCelulas.entrySet()) {
+			// System.out.println("Nombre de la celula: " + infocelula.getKey().toString());
+			ObservableList<IncurridoVO> incurri = incurrioParaNombreDeCelula(fecha);
 			EmpleadoVO emp = new EmpleadoVO();
-			emp.setNomEmpleado("");
-			emp.setNroEmpleado(infocelula.getKey().toString());
-			emp.setCelula(infocelula.getKey().toString());
-
+			emp.setNomEmpleado(infocelula.getValue().getNombreCelula());
+			emp.setNroEmpleado("Nombre Celula");
+			emp.setCelula(infocelula.getValue().getNombreCelula());
 			emp.setIncurridos(incurri);
 			emp.setIdentificador(contador);
 			resiltIncurridos.put("" + contador, emp);
 			contador++;
 			
-			for (String idEMpleado : infocelula.getValue().getNomEmpleados()) {
+
+			for (String idEMpleado : infocelula.getValue().getIdsEmpleados()) {
 				for (Map.Entry<String, EmpleadoVO> personalIncurrido : input.entrySet()) {
 					if (idEMpleado.equals(personalIncurrido.getKey().toString())) {
-						System.out.println("Nombre Empleado: " + personalIncurrido.getValue().getNomEmpleado() + " - ID Empleado: " + idEMpleado);
+						// System.out.println("Nombre Empleado: " + personalIncurrido.getValue().getNomEmpleado() + " - ID Empleado: " + idEMpleado);
 						personalIncurrido.getValue().setIdentificador(contador);
-						personalIncurrido.getValue().setCelula(infocelula.getKey().toString());
+						personalIncurrido.getValue().setCelula(infocelula.getValue().getNombreCelula());
 						resiltIncurridos.put("" + contador, personalIncurrido.getValue());
 						contador++;
 					}
@@ -321,45 +306,86 @@ public class Incurridos implements Initializable{
 		return resiltIncurridos;
 	}
 
-	private HashMap<String, DatoCelula> crearCelulas() {
-		HashMap<String, DatoCelula> datosCelulas = new HashMap<String, DatoCelula>();
+	private ObservableList<IncurridoVO> incurrioParaNombreDeCelula(Date lastFecha) throws ParseException {
+		ObservableList<IncurridoVO> incurri = FXCollections.observableArrayList();
+		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+		int fechames = CnvString.getMonthOfDate(lastFecha);
+		int fechaanio = CnvString.getYearOfDate(lastFecha);
+		String stgecha = fechaanio + "-" + fechames + "-";
+		for (int i = 1; i < 33; i++) {
+			IncurridoVO incurrido = new IncurridoVO();
+			if (i < 10) {
+				incurrido.setFecha((Date) formatoDelTexto.parse(stgecha + "0" + i));
+			} else {
+				incurrido.setFecha((Date) formatoDelTexto.parse(stgecha + i));
+			}
+			incurrido.setNroEmpleado(118678);
+			incurrido.setHoras(0);
+			incurrido.setDescIncurrido("Identificador de la Celula.");
+			incurri.add(incurrido);
+		}
+		return incurri;
+	}
 
+	private HashMap<Date, DiaVO> agruparIncurrido(ObservableList<IncurridoVO> incu) {
+		HashMap<Date, DiaVO> incuAgrup = new HashMap<Date, DiaVO>();
+
+		for (IncurridoVO incurridoVO : incu) {
+
+			if (null != incuAgrup.get(incurridoVO.getFecha())) {
+				DiaVO dia = incuAgrup.get(incurridoVO.getFecha());
+				dia.setHoras(dia.getHoras() + incurridoVO.getHoras());
+				dia.setDescIncurrido(dia.getDescIncurrido() + "; " + incurridoVO.getDescIncurrido());
+				incuAgrup.remove(incurridoVO.getFecha());
+				incuAgrup.put(incurridoVO.getFecha(), dia);
+			} else {
+				DiaVO dia = new DiaVO();
+				dia.setHoras(incurridoVO.getHoras());
+				dia.setDescIncurrido(incurridoVO.getDescIncurrido());
+				incuAgrup.put(incurridoVO.getFecha(), dia);
+			}
+		}
+
+		return incuAgrup;
+	}
+
+	private DatoCelula crearCelula(String nomCelula, String idsEmpleados) {
 		DatoCelula celula = new DatoCelula();
-		String[] nomEmpleadosAppForce = new String[4];
-		nomEmpleadosAppForce[0] = "175464";
-		nomEmpleadosAppForce[1] = "171406";
-		nomEmpleadosAppForce[2] = "184539";
-		nomEmpleadosAppForce[3] = "189848";
-		celula.setNombreCelula("APP FORCE");
-		celula.setNomEmpleados(nomEmpleadosAppForce);
-		datosCelulas.put("APP FORCE", celula);
+		String[] empleados = idsEmpleados.split(";");
+		celula.setNombreCelula(nomCelula);
+		celula.setIdsEmpleados(empleados);
+		return celula;
+	}
 
-		celula = new DatoCelula();
-		celula.setNombreCelula("MOLTEN UNIT");
-		String[] nomEmpleadosMoltenUnit = new String[2];
-		nomEmpleadosMoltenUnit[0] = "118678";
-		nomEmpleadosMoltenUnit[1] = "178207";
-		celula.setNomEmpleados(nomEmpleadosMoltenUnit);
-		datosCelulas.put("MOLTEN UNIT", celula);
+	private HashMap<Integer, DatoCelula> crearCelulas() {
+		HashMap<Integer, DatoCelula> datosCelulas = new HashMap<Integer, DatoCelula>();
+		Integer cont = 1;
 
-		celula = new DatoCelula();
-		celula.setNombreCelula("WEB ONE");
-		String[] nomEmpleadosWebOne = new String[1];
-		nomEmpleadosWebOne[0] = "132697";
-		celula.setNomEmpleados(nomEmpleadosWebOne);
-		datosCelulas.put("WEB ONE", celula);
+		DatoCelula celula = crearCelula("APP FORCE", "175464;171406;184539;189848");
+		datosCelulas.put(cont, celula);
+		cont++;
 
-		celula = new DatoCelula();
-		celula.setNombreCelula("XDEVS");
-		String[] nomEmpleadosXdevs = new String[5];
-		nomEmpleadosXdevs[0] = "191236";
-		nomEmpleadosXdevs[1] = "191235";
-		nomEmpleadosXdevs[2] = "191034";
-		nomEmpleadosXdevs[3] = "138247";
-		nomEmpleadosXdevs[4] = "189639";
-		celula.setNomEmpleados(nomEmpleadosXdevs);
-		datosCelulas.put("XDEV", celula);
-		
+		celula = crearCelula("MOLTEN UNIT", "118678;178207");
+		datosCelulas.put(cont, celula);
+		cont++;
+
+		celula = crearCelula("WEB ONE", "132697");
+		datosCelulas.put(cont, celula);
+		cont++;
+
+		celula = crearCelula("XDEVS", "191236;191235;191034;138247;189639");
+		datosCelulas.put(cont, celula);
+		cont++;
+
+		celula = crearCelula("REVOLUTION", "177853");
+		datosCelulas.put(cont, celula);
+		cont++;
+
+		celula = crearCelula("SIN_CELULA",
+				"195093;181797;114697;164318;185146;200171;200824;184372;197191;170663;192222;185150;180031;105592;191141;195204;195201;189716;172157;194157;191050;170435;125944;175465;191049;102103;199688;102553;144803;177854;105029;177855;187601");
+		datosCelulas.put(cont, celula);
+		cont++;
+
 		return datosCelulas;
 	}
 }

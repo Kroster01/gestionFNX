@@ -243,13 +243,13 @@ public class CnvString {
 	public static String formatDateStrangePrev(String fechaRara) {
 		String dia = Constantes.S_EMPTY;
 		String mes = Constantes.S_EMPTY;
-		String año = Constantes.S_EMPTY;
+		String anio = Constantes.S_EMPTY;
 
 		if (fechaRara.split(" ").length > 1) {
 			dia = fechaRara.split(" ")[2].trim();
 			mes = getFormatMes(fechaRara.split(" ")[1].trim());
-			año = fechaRara.split(" ")[5].trim();
-			return dia + "-" + mes + "-" + año;
+			anio = fechaRara.split(" ")[5].trim();
+			return dia + "-" + mes + "-" + anio;
 		} else {
 			return fechaRara;
 		}
@@ -258,13 +258,13 @@ public class CnvString {
 	public static String formatDateStrange(String fechaRara) {
 		String dia = Constantes.S_EMPTY;
 		String mes = Constantes.S_EMPTY;
-		String año = Constantes.S_EMPTY;
+		String anio = Constantes.S_EMPTY;
 
 		if (fechaRara.split(" ").length > 1) {
 			dia = fechaRara.split(" ")[2].trim();
 			mes = getFormatMes(fechaRara.split(" ")[1].trim());
-			año = fechaRara.split(" ")[3].trim();
-			return dia + "-" + mes + "-" + año;
+			anio = fechaRara.split(" ")[3].trim();
+			return dia + "-" + mes + "-" + anio;
 		} else {
 			return fechaRara;
 		}

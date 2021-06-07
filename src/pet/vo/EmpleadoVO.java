@@ -8,6 +8,7 @@ public class EmpleadoVO {
 	private String nroEmpleado;
 	private String nomEmpleado;
 	private String celula;
+	private ObservableList<IncurridoVO> incurridos;
 
 	private String day1;
 	private String day2;
@@ -569,8 +570,6 @@ public class EmpleadoVO {
 	public void setDay31(String day31) {
 		this.day31 = day31;
 	}
-
-	private ObservableList<IncurridoVO> incurridos;
 
 	public String getNroEmpleado() {
 		return nroEmpleado;
