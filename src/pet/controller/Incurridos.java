@@ -35,118 +35,118 @@ import pet.vo.IncurridoVO;
 
 public class Incurridos implements Initializable {
 
-   @FXML
-    private TableColumn<EmpleadoVO, String> col18;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col18;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col17;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col17;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col16;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col16;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col15;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col15;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col14;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col14;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col13;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col13;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col129;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col129;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col12;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col12;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col11;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col11;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col126;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col126;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col125;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col125;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col128;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col128;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col127;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col127;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col122;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col122;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col121;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col121;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col124;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col124;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col19;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col19;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col123;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col123;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col120;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col120;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col1;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col1;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col119;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col119;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col118;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col118;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col115;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col115;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col114;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col114;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col117;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col117;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col116;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col116;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col111;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col111;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col110;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col110;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col113;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col113;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col112;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col112;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> col130;
+	@FXML
+	private TableColumn<EmpleadoVO, String> col130;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> colNomEmpl;
+	@FXML
+	private TableColumn<EmpleadoVO, String> colNomEmpl;
 
-    @FXML
-    private TableView<EmpleadoVO> tableIncurrido;
+	@FXML
+	private TableView<EmpleadoVO> tableIncurrido;
 
-    @FXML
-    private TableColumn<EmpleadoVO, String> colNumEmpl;
+	@FXML
+	private TableColumn<EmpleadoVO, String> colNumEmpl;
 
-    @FXML
-    private DatePicker dFecha;
+	@FXML
+	private DatePicker dFecha;
 
-    @FXML
-    private ComboBox<?> cCelda;
+	@FXML
+	private ComboBox<?> cCelda;
 
-    @FXML
-    private Button bBuscar;
+	@FXML
+	private Button bBuscar;
 
-    @FXML
+	@FXML
 	void buscar(ActionEvent event) {
 		try {
 			if (dFecha.getValue() == null) {
@@ -156,7 +156,8 @@ public class Incurridos implements Initializable {
 			Date lastFecha = CnvString.getLastDateOfMonth(dFecha);
 			String celda = "'C. DES Telefonica Agile', 'C. DES CEL HACINADOS', 'C. QA', 'C. DES CEL MOVISTAR CLICK', 'C. DES Movilidad'";
 
-			HashMap<String, EmpleadoVO> incurridosTotales = ObtieneIncurridos.obtieneIncurridosFenix(celda, CnvString.convertFecha(firstFecha), CnvString.convertFecha(lastFecha));
+			HashMap<String, EmpleadoVO> incurridosTotales = ObtieneIncurridos.obtieneIncurridosFenix(celda,
+					CnvString.convertFecha(firstFecha), CnvString.convertFecha(lastFecha));
 			HashMap<String, EmpleadoVO> incurridos = agruparPorCelula(incurridosTotales, lastFecha);
 			ObservableList<EmpleadoVO> empleadosList = FXCollections.observableArrayList();
 
@@ -171,7 +172,8 @@ public class Incurridos implements Initializable {
 			FXCollections.sort(empleadosList, comparador);
 
 			for (EmpleadoVO empleado : empleadosList) {
-				System.out.println(empleado.getNroEmpleado() + ";" + empleado.getNomEmpleado() + ";" + empleado.getCelula());
+				System.out.println(
+						empleado.getNroEmpleado() + ";" + empleado.getNomEmpleado() + ";" + empleado.getCelula());
 			}
 
 			tableIncurrido.getItems().clear();
@@ -269,7 +271,8 @@ public class Incurridos implements Initializable {
 		TableColumnUtil.setIniColumnInc(col130, dFecha, 31, "day31");
 	}
 
-	private HashMap<String, EmpleadoVO> agruparPorCelula(HashMap<String, EmpleadoVO> input, Date fecha) throws ParseException {
+	private HashMap<String, EmpleadoVO> agruparPorCelula(HashMap<String, EmpleadoVO> input, Date fecha)
+			throws ParseException {
 		HashMap<String, EmpleadoVO> resiltIncurridos = new HashMap<String, EmpleadoVO>();
 		HashMap<Integer, DatoCelula> datosCelulas = crearCelulas();
 
@@ -280,18 +283,19 @@ public class Incurridos implements Initializable {
 			ObservableList<IncurridoVO> incurri = incurrioParaNombreDeCelula(fecha);
 			EmpleadoVO emp = new EmpleadoVO();
 			emp.setNomEmpleado(infocelula.getValue().getNombreCelula());
-			emp.setNroEmpleado("Nombre Celula");
+			emp.setNroEmpleado("");
 			emp.setCelula(infocelula.getValue().getNombreCelula());
 			emp.setIncurridos(incurri);
 			emp.setIdentificador(contador);
 			resiltIncurridos.put("" + contador, emp);
 			contador++;
-			
 
 			for (String idEMpleado : infocelula.getValue().getIdsEmpleados()) {
 				for (Map.Entry<String, EmpleadoVO> personalIncurrido : input.entrySet()) {
 					if (idEMpleado.equals(personalIncurrido.getKey().toString())) {
-						// System.out.println("Nombre Empleado: " + personalIncurrido.getValue().getNomEmpleado() + " - ID Empleado: " + idEMpleado);
+						// System.out.println("Nombre Empleado: " +
+						// personalIncurrido.getValue().getNomEmpleado() + " - ID Empleado: " +
+						// idEMpleado);
 						personalIncurrido.getValue().setIdentificador(contador);
 						personalIncurrido.getValue().setCelula(infocelula.getValue().getNombreCelula());
 						resiltIncurridos.put("" + contador, personalIncurrido.getValue());
@@ -319,7 +323,7 @@ public class Incurridos implements Initializable {
 			} else {
 				incurrido.setFecha((Date) formatoDelTexto.parse(stgecha + i));
 			}
-			incurrido.setNroEmpleado(118678);
+			incurrido.setNroEmpleado(0);
 			incurrido.setHoras(0);
 			incurrido.setDescIncurrido("Identificador de la Celula.");
 			incurri.add(incurrido);
@@ -381,8 +385,20 @@ public class Incurridos implements Initializable {
 		datosCelulas.put(cont, celula);
 		cont++;
 
+		celula = crearCelula("LogiXtreme", "177855;170663;185150;164318;177854;200824");
+		datosCelulas.put(cont, celula);
+		cont++;
+
+		celula = crearCelula("Qualiteam", "125944;185146;184372;170435");
+		datosCelulas.put(cont, celula);
+		cont++;
+
+		celula = crearCelula("SHIED-BROTHERS", "199688;187601;194157;195204;102103");
+		datosCelulas.put(cont, celula);
+		cont++;
+
 		celula = crearCelula("SIN_CELULA",
-				"195093;181797;114697;164318;185146;200171;200824;184372;197191;170663;192222;185150;180031;105592;191141;195204;195201;189716;172157;194157;191050;170435;125944;175465;191049;102103;199688;102553;144803;177854;105029;177855;187601");
+				"195093;181797;114697;200171;197191;192222;180031;105592;191141;195201;189716;172157;191050;175465;191049;102553;144803;105029");
 		datosCelulas.put(cont, celula);
 		cont++;
 

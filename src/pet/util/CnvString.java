@@ -359,8 +359,11 @@ public class CnvString {
 				&& (null == item || item.equals(Constantes.S_EMPTY))) {
 			col.setStyle("-fx-alignment: CENTER; -fx-background-color:  #E88718");
 		} else if (null != item && !item.equals(Constantes.S_EMPTY)
-				&& Double.valueOf(item) < 9) {
+				&& (Double.valueOf(item) > 0 && Double.valueOf(item) < 9)) {
 			col.setStyle("-fx-alignment: CENTER; -fx-background-color:  #E5C61A");
+		} else if (null != item && !item.equals(Constantes.S_EMPTY)
+				&& Double.valueOf(item) == 0) {
+			col.setStyle("-fx-alignment: CENTER; -fx-background-color:  #000000");
 		} else {
 			col.setStyle("-fx-alignment: CENTER;");
 		}
