@@ -243,13 +243,13 @@ public class CnvString {
 	public static String formatDateStrangePrev(String fechaRara) {
 		String dia = Constantes.S_EMPTY;
 		String mes = Constantes.S_EMPTY;
-		String año = Constantes.S_EMPTY;
+		String anio = Constantes.S_EMPTY;
 
 		if (fechaRara.split(" ").length > 1) {
 			dia = fechaRara.split(" ")[2].trim();
 			mes = getFormatMes(fechaRara.split(" ")[1].trim());
-			año = fechaRara.split(" ")[5].trim();
-			return dia + "-" + mes + "-" + año;
+			anio = fechaRara.split(" ")[5].trim();
+			return dia + "-" + mes + "-" + anio;
 		} else {
 			return fechaRara;
 		}
@@ -258,13 +258,13 @@ public class CnvString {
 	public static String formatDateStrange(String fechaRara) {
 		String dia = Constantes.S_EMPTY;
 		String mes = Constantes.S_EMPTY;
-		String año = Constantes.S_EMPTY;
+		String anio = Constantes.S_EMPTY;
 
 		if (fechaRara.split(" ").length > 1) {
 			dia = fechaRara.split(" ")[2].trim();
 			mes = getFormatMes(fechaRara.split(" ")[1].trim());
-			año = fechaRara.split(" ")[3].trim();
-			return dia + "-" + mes + "-" + año;
+			anio = fechaRara.split(" ")[3].trim();
+			return dia + "-" + mes + "-" + anio;
 		} else {
 			return fechaRara;
 		}
@@ -359,8 +359,11 @@ public class CnvString {
 				&& (null == item || item.equals(Constantes.S_EMPTY))) {
 			col.setStyle("-fx-alignment: CENTER; -fx-background-color:  #E88718");
 		} else if (null != item && !item.equals(Constantes.S_EMPTY)
-				&& Double.valueOf(item) < 9) {
+				&& (Double.valueOf(item) > 0 && Double.valueOf(item) < 9)) {
 			col.setStyle("-fx-alignment: CENTER; -fx-background-color:  #E5C61A");
+		} else if (null != item && !item.equals(Constantes.S_EMPTY)
+				&& Double.valueOf(item) == 0) {
+			col.setStyle("-fx-alignment: CENTER; -fx-background-color:  #000000");
 		} else {
 			col.setStyle("-fx-alignment: CENTER;");
 		}

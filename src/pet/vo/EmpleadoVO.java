@@ -3,11 +3,13 @@ package pet.vo;
 import javafx.collections.ObservableList;
 
 public class EmpleadoVO {
-	
+
+	private Integer identificador;
 	private String nroEmpleado;
 	private String nomEmpleado;
 	private String celula;
-	
+	private ObservableList<IncurridoVO> incurridos;
+
 	private String day1;
 	private String day2;
 	private String day3;
@@ -40,7 +42,7 @@ public class EmpleadoVO {
 	private String day30;
 	private String day31;
 	private String total;
-	
+
 	private String descDay1;
 	private String descDay2;
 	private String descDay3;
@@ -72,7 +74,7 @@ public class EmpleadoVO {
 	private String descDay29;
 	private String descDay30;
 	private String descDay31;
-	
+
 	public String getDescDay1() {
 		return descDay1;
 	}
@@ -569,8 +571,6 @@ public class EmpleadoVO {
 		this.day31 = day31;
 	}
 
-	private ObservableList<IncurridoVO> incurridos;
-
 	public String getNroEmpleado() {
 		return nroEmpleado;
 	}
@@ -587,6 +587,14 @@ public class EmpleadoVO {
 		this.nomEmpleado = nomEmpleado;
 	}
 
+	public Integer getIdentificador() {
+		return identificador;
+	}
+
+	public void setIdentificador(Integer identificador) {
+		this.identificador = identificador;
+	}
+
 	public ObservableList<IncurridoVO> getIncurridos() {
 		return incurridos;
 	}
@@ -594,21 +602,21 @@ public class EmpleadoVO {
 	public void setIncurridos(ObservableList<IncurridoVO> incurridos) {
 		this.incurridos = incurridos;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Integer.valueOf(this.nroEmpleado);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		boolean result = false;
-		//si el objeto no es instancia de SgVendedor return false
+		// si el objeto no es instancia de SgVendedor return false
 		if ((obj != null) && obj instanceof EmpleadoVO) {
 			EmpleadoVO empleado = (EmpleadoVO) obj;
 			if (null != nroEmpleado && null != empleado.getNroEmpleado()) {
 				result = nroEmpleado.equals(empleado.getNroEmpleado());
-			} 
+			}
 		}
 		return result;
 	}
@@ -628,7 +636,5 @@ public class EmpleadoVO {
 	public void setTotal(String total) {
 		this.total = total;
 	}
-	
-	
 
 }
