@@ -393,15 +393,38 @@ public class Incurridos implements Initializable {
 		datosCelulas.put(cont, celula);
 		cont++;
 
-		celula = crearCelula("SHIED-BROTHERS", "199688;187601;194157;195204;102103");
+		celula = crearCelula("SHIED-BROTHERS", "199688;187601;194157;195204;102103;138003");
+		datosCelulas.put(cont, celula);
+		cont++;
+
+		celula = crearCelula("Virtual Kombat 3", "191049;197191;191050");
+		datosCelulas.put(cont, celula);
+		cont++;
+
+		celula = crearCelula("Enterprire", "191141;181797");
 		datosCelulas.put(cont, celula);
 		cont++;
 
 		celula = crearCelula("SIN_CELULA",
-				"195093;181797;114697;200171;197191;192222;180031;105592;191141;195201;189716;172157;191050;175465;191049;102553;144803;105029");
+				"195093;114697;200171;192222;180031;105592;195201;189716;172157;175465;144803;105029;102553");
 		datosCelulas.put(cont, celula);
 		cont++;
 
+		/* Nombre son celula:
+			195093;Alexis Torres Carrillo;null
+			114697;Angelo Esteban Venegas Vilche;null
+			200171;Camilo Rojas Campos;null
+			192222;Dina Poddubnaya;null
+			180031;Estefani Pinto Duran;null
+			105592;Franco Figueroa Gilli;null
+			195201; ???
+			189716; ???
+			172157; ???
+			175465;Jose Nicolas Osvaldo DAppollonio DAppollonio;null
+			144803;Sara Naminao Cayuqueo;null
+			105029;TAMARA EXMIRNA CUMINAO NEIRA;null
+			102553;RUBEN ELIAS SANCHEZ BELTRAN;null
+		*/
 		return datosCelulas;
 	}
 }
