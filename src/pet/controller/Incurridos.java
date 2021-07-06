@@ -397,16 +397,16 @@ public class Incurridos implements Initializable {
 		datosCelulas.put(cont, celula);
 		cont++;
 
-		celula = crearCelula("Virtual Kombat 3", "191049;197191;191050");
+		celula = crearCelula("Virtual Kombat 3", "191049;197191;191050;114697");
 		datosCelulas.put(cont, celula);
 		cont++;
 
-		celula = crearCelula("Enterprire", "191141;181797");
+		celula = crearCelula("Enterprise", "191141;181797");
 		datosCelulas.put(cont, celula);
 		cont++;
 
 		celula = crearCelula("SIN_CELULA",
-				"195093;114697;200171;192222;180031;105592;195201;189716;172157;175465;144803;105029;102553");
+				"195093;200171;192222;180031;105592;195201;189716;172157;175465;144803;105029;102553");
 		datosCelulas.put(cont, celula);
 		cont++;
 
