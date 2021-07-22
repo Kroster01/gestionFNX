@@ -397,7 +397,7 @@ public class Incurridos implements Initializable {
 		datosCelulas.put(cont, celula);
 		cont++;
 
-		celula = crearCelula("Virtual Kombat 3", "191049;197191;191050;114697");
+		celula = crearCelula("Virtual Kombat 3", "191049;197191;114697;198596");
 		datosCelulas.put(cont, celula);
 		cont++;
 
