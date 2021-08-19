@@ -369,7 +369,7 @@ public class Incurridos implements Initializable {
 		datosCelulas.put(cont, celula);
 		cont++;
 
-		celula = crearCelula("MOLTEN UNIT", "118678;178207");
+		celula = crearCelula("MOLTEN UNIT", "178207");
 		datosCelulas.put(cont, celula);
 		cont++;
 
@@ -377,7 +377,7 @@ public class Incurridos implements Initializable {
 		datosCelulas.put(cont, celula);
 		cont++;
 
-		celula = crearCelula("XDEVS", "191236;191235;191034;138247;189639");
+		celula = crearCelula("XDEVS", "191236;191235;191034;138247;189639;118678");
 		datosCelulas.put(cont, celula);
 		cont++;
 
